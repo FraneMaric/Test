@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="ala.css">
+    <script>
+        function Pozdravi() {
+            var ime = window.prompt("Molimo unesite vaše ime", 'Moje ime');
+            if (ime == "") {
+                window.alert("Pozdrav nepoznati");
+            }
+            else {
+                window.alert("Pozdrav " + ime);
+            }
+        }
+
+        function Zbrajanje() {
+            var a =parseInt( window.prompt("Unesite prvi broj"));
+            var b = parseInt(window.prompt("Unesite drugi broj"));
+            Rezultat(a, b);
+        }
+
+        function Rezultat(a, b) {
+            var c = parseInt(a + b);
+            window.alert("Vaš rezultat je "+c);
+        }
+
+        function Vrime() {
+            var datum = new Date();
+            var vrime = datum.getHours();
+            if (vrime >= 6 && vrime <= 11) {
+                window.alert("Dobro jutro");
+            }
+            else if (vrime >= 12 && vrime <= 19) {
+                window.alert("Dobra dan");
+            }
+            else {
+                window.alert("Dobra vecer");
+            }
+        }
+
+        function Potvrda() {
+            window.prompt("Aj stisni confirm ako imas muda ");
+                if (confirm("Jedi govna")) {
+                }
+                else {
+                    alert("Djecace spusti muda da ti dlake na jeziku nebi narasle");
+                }
+            
+
+        }
+
+
+        function Link() {
+            var broj = window.prompt("Unesite broj od 1 do 3 za random link")
+            var poruka;
+            switch (broj) {
+                case "1":
+                    poruka = "www.mev.hr";
+                    break;
+                case "2":
+                    poruka = "www.facebook.com";
+                    break;
+                case "3":
+                    poruka = "www.google.hr";
+                    break;
+            }
+            document.write(poruka);
+        }
+
+        function Naslovi() {
+            
+            for (var i = 1; i <= 6; i++) {
+                document.write("<h" + i+">" + "Ovo je naslov "+i);
+            }
+        }
+
+
+        function PrijevoznaSredstva() {
+            var prijevoz = ['avion', 'auto', 'noge','bicikl','brod','motocikl','podmornica'];
+            
+            for (var i = 0; i <= 6; i++) {
+                document.write("<p>Vozilo broj "+i+": " + prijevoz[i]+"</p>");
+            }
+
+        }
+
+
+        function VelikiZadatak() {
+            var prijevoz1 = [ 'avion' , 'auto', 'noge', 'bicikl', 'brod', 'motocikl', 'podmornica'];
+            var brojSlova = prijevoz1.reduce((suma, trenuti) => suma + trenuti.length, 0); // lamda funkcijom se radi
+            prijevoz1.sort();
+            for (var i = 0; i < 6; i++) {
+                document.write("<p>" + prijevoz1[i] + "</p>");
+            }
+            var prijevozVeliki = prijevoz1.map(imena => imena.toUpperCase());
+            prijevoz1.sort();
+            for (var i = 0; i < 6; i++) {
+                document.write("<p>" + prijevozVeliki[i] + "</p>");
+            }
+
+            function Bicikla(ime) {
+                return ime == 'bicikl';
+            }function avion(ime) {
+                return ime == 'avion';
+            }function auto(ime) {
+                return ime == 'auto';
+            }function noge(ime) {
+                return ime == 'noge';
+            }
+            /*var pocekat = prijevoz1.filter(function (ime) { ime.startsWith("a"); });
+            
+            function Filter(ime) {
+                return ime == 4;
+            }
+            document.write("<p>Sredstva s 4 slova su: " + prijevoz1.filter(Filter) + "</p>");    ne mogu filter
+            document.write("<p>Index bicikle je: " + pocekat.toString() + "</p>");      i ovo je filter */
+            document.write("<p>Index bicikle je: " + prijevoz1.findIndex(Bicikla).toString() + "</p>");
+            document.write("<p>Index aviona je: " + prijevoz1.findIndex(avion).toString() + "</p>");
+            document.write("<p>Index auta je: " + prijevoz1.findIndex(auto).toString() + "</p>");
+            document.write("<p>Index noga je: " + prijevoz1.findIndex(noge).toString() + "</p>");
+            document.write("Ukupan broj slova je: " + brojSlova.toString());
+
+
+        }
+
+
+
+        function NestoNovo() {
+            var Naslovi;
+            var Tekstovi;
+            var i = 1;
+            for (var j = 0; j < i; j++) {
+                Naslovi[j] = window.prompt("Unesite naslov");
+                if (Naslovi[i] != "") {
+                    i++;
+                }
+            }
+            
+
+
+            document.addEventListener("click", NestoNovo)
+        }
+
+
+    </script>
+
+</head>
+<body>
+
+    <button onclick="Pozdravi()">Funkcija pozdravljanja</button>
+    <button onclick="Zbrajanje()">Pokreni zbrajanje</button>
+    <button onclick="Vrime()">Pokreni vrime</button>
+    <button onclick="Potvrda()">Pokreni potvrdu</button>
+    <button onclick="Link()">Pokreni random</button>
+    <button onclick="Naslovi()">Pokreni Naslove</button>
+    <button onclick="PrijevoznaSredstva()">Pokreni vrum vrum</button>
+    <button onclick="VelikiZadatak()">Pokreni vrum vrum nastavak</button>
+    <button onclick="NestoNovo()">Pokreni nesto novo</button>
+    
+
+</body>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</html>
